@@ -1,0 +1,10 @@
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\bin\Debug\prj_watermark.exe.config
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\bin\Debug\prj_watermark.exe
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\bin\Debug\prj_watermark.pdb
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.csprojAssemblyReference.cache
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.frm_watermark.resources
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.Properties.Resources.resources
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.csproj.GenerateResource.cache
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.csproj.CoreCompileInputs.cache
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.exe
+C:\Users\luizbossoi\Documents\Visual Studio 2017\Projects\WindowsFormsApp1\prj_watermark\obj\Debug\prj_watermark.pdb

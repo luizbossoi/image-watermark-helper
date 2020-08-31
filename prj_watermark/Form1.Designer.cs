@@ -65,6 +65,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.outputlog = new System.Windows.Forms.RichTextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_fontcolor = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel_customtext.SuspendLayout();
@@ -117,6 +120,7 @@
             this.txt_outputdir.ReadOnly = true;
             this.txt_outputdir.Size = new System.Drawing.Size(212, 20);
             this.txt_outputdir.TabIndex = 10;
+            this.txt_outputdir.Text = "D:\\teste\\saida";
             // 
             // button4
             // 
@@ -169,6 +173,7 @@
             this.txt_imagesdir.ReadOnly = true;
             this.txt_imagesdir.Size = new System.Drawing.Size(212, 20);
             this.txt_imagesdir.TabIndex = 5;
+            this.txt_imagesdir.Text = "D:\\teste\\fotos";
             // 
             // button3
             // 
@@ -293,6 +298,8 @@
             // 
             // panel_textsize
             // 
+            this.panel_textsize.Controls.Add(this.txt_fontcolor);
+            this.panel_textsize.Controls.Add(this.label8);
             this.panel_textsize.Controls.Add(this.lbl_fontsizepx);
             this.panel_textsize.Controls.Add(this.txt_fontsize);
             this.panel_textsize.Controls.Add(this.lbl_fontsize);
@@ -340,6 +347,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -353,7 +361,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(266, 19);
+            this.radioButton3.Location = new System.Drawing.Point(343, 19);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(80, 17);
             this.radioButton3.TabIndex = 9;
@@ -365,9 +373,9 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(121, 19);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(139, 17);
+            this.radioButton2.Size = new System.Drawing.Size(132, 17);
             this.radioButton2.TabIndex = 8;
-            this.radioButton2.Text = "Image image date taken";
+            this.radioButton2.Text = "Image date/time taken";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -430,6 +438,43 @@
             this.button5.Text = "Github page";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(259, 19);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(78, 17);
+            this.radioButton4.TabIndex = 10;
+            this.radioButton4.Text = "Date taken";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(185, 8);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Font-color:";
+            // 
+            // txt_fontcolor
+            // 
+            this.txt_fontcolor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txt_fontcolor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.txt_fontcolor.FormattingEnabled = true;
+            this.txt_fontcolor.Items.AddRange(new object[] {
+            "Red",
+            "Black",
+            "White",
+            "Green",
+            "Yellow",
+            "Purple"});
+            this.txt_fontcolor.Location = new System.Drawing.Point(248, 4);
+            this.txt_fontcolor.Name = "txt_fontcolor";
+            this.txt_fontcolor.Size = new System.Drawing.Size(86, 21);
+            this.txt_fontcolor.TabIndex = 18;
             // 
             // frm_watermark
             // 
@@ -504,6 +549,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.RichTextBox outputlog;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.ComboBox txt_fontcolor;
+        private System.Windows.Forms.Label label8;
     }
 }
 

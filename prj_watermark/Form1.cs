@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,28 +27,37 @@ namespace prj_watermark
             InitializeComponent();
         }
 
-        public void startPhotos(String[] files, String proctype, String txt_watermarkimage, String txt_wposition, String txt_fontsize, String txt_customtext,
+        public void startPhotos(String[] files, String proctype, String txt_watermarkimage, String txt_wposition, String txt_fontsize, String fontcolor, String txt_customtext,
                                         String txt_outputdir)
         {
 
             int totalran = 0;
+            Color fontColor = Color.Red;
 
             foreach (String f in files)
             {
                 int x = 0; int y = 0;
                 
-
                 try
                 {
                     Image image = Image.FromFile(f);
-                    
-                    if (proctype == "date" || proctype == "customtext")
+
+                    if (proctype == "date" || proctype == "customtext" || proctype == "datetime")
                     {
+                        
+
                         // create a png watermark first
                         string text = "";
-                        if (proctype == "date") text = GetImageDate(f); else text = txt_customtext;
-
-                        DrawText(text, new Font("Arial", int.Parse(txt_fontsize), FontStyle.Bold), Color.Red, image.Width, Directory.GetCurrentDirectory() + "\\temp_watermark.png");
+                        if (proctype == "datetime") text = GetImageDate(f, "datetime"); else if (proctype == "date") text = GetImageDate(f, "date"); else text = txt_customtext;
+                        
+                        if (fontcolor == "Red") fontColor = Color.Red;
+                        if (fontcolor == "Black") fontColor = Color.Black;
+                        if (fontcolor == "White") fontColor = Color.White;
+                        if (fontcolor == "Green") fontColor = Color.LightGreen;
+                        if (fontcolor == "Yellow") fontColor = Color.Yellow;
+                        if (fontcolor == "Purple") fontColor = Color.Purple;
+                        
+                        DrawText(text, new Font("Arial", int.Parse(txt_fontsize), FontStyle.Bold), fontColor, image.Width, Directory.GetCurrentDirectory() + "\\temp_watermark.png");
                         txt_watermarkimage = Directory.GetCurrentDirectory() + "\\temp_watermark.png";
                     }
                     
@@ -134,8 +144,9 @@ namespace prj_watermark
 
             String fontsize = txt_fontsize.Text;
             String wposition = txt_wposition.Text;
+            String fontcolor = txt_fontcolor.Text;
 
-            ThreadStart starter = () => startPhotos(files, proctype, txt_watermarkimage.Text, wposition, fontsize, txt_customtext.Text, txt_outputdir.Text);
+            ThreadStart starter = () => startPhotos(files, proctype, txt_watermarkimage.Text, wposition, fontsize, fontcolor, txt_customtext.Text, txt_outputdir.Text);
             Thread thread = new Thread(starter);
             thread.Start();
 
@@ -187,7 +198,7 @@ namespace prj_watermark
 
         }
 
-        public static String GetImageDate(string filePath)
+        public static String GetImageDate(string filePath, string datetype="datetime")
         {
             System.Drawing.Image myImage = Image.FromFile(filePath);
             String date = "  ";
@@ -195,7 +206,15 @@ namespace prj_watermark
             {
                 System.Drawing.Imaging.PropertyItem propItem = myImage.GetPropertyItem(36867);
                 string dateTaken = new System.Text.RegularExpressions.Regex(":").Replace(System.Text.Encoding.UTF8.GetString(propItem.Value), "-", 2);
-                date = System.DateTime.Parse(dateTaken).ToString();
+                Console.WriteLine(datetype);
+                
+                if (datetype == "datetime")
+                {
+                    date = System.DateTime.Parse(dateTaken).ToString();
+                } else
+                {
+                    date = System.DateTime.Parse(dateTaken).ToShortDateString();
+                }
             }
             catch (Exception e) { }
 
@@ -268,6 +287,14 @@ namespace prj_watermark
                 panel_watermark.Visible = false;
                 panel_customtext.Visible = false;
                 panel_textsize.Visible = true;
+                proctype = "datetime";
+            }
+
+            if (radioButton4.Checked)
+            {
+                panel_watermark.Visible = false;
+                panel_customtext.Visible = false;
+                panel_textsize.Visible = true;
                 proctype = "date";
             }
 
@@ -290,6 +317,7 @@ namespace prj_watermark
         {
             txt_wposition.SelectedIndex = 0;
             txt_fontsize.SelectedIndex = 0;
+            txt_fontcolor.SelectedIndex = 0;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -301,6 +329,11 @@ namespace prj_watermark
         {
             outputlog.SelectionStart = outputlog.Text.Length;
             outputlog.ScrollToCaret();
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            changePanels();
         }
     }
 }
